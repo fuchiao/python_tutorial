@@ -1,0 +1,510 @@
+<!doctype html>
+<html><head><title>Python 3/3</title><meta charset="UTF-8"><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic|Roboto:400,700,700italic,400italic" type="text/css"><style>/*
+ * Copyright 2014 Quip
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+body {
+    font-size: 15px;
+    color: #333;
+    background: #fff;
+    padding: 60px 95px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern";
+    font-kerning: normal;
+    -moz-font-feature-settings: "kern";
+    -webkit-font-feature-settings: "kern";
+}
+
+/* Headings */
+h1, h2, h3, th {
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    margin: 0;
+    margin-top: 1.25em;
+    margin-bottom: 0.75em;
+}
+
+h1 {
+    font-size: 35px;
+    line-height: 42px;
+}
+
+h1:first-child {
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+h3 {
+    text-transform: uppercase;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+/* Body text */
+body, p, ul, ol, td {
+    font-family: 'Crimson Text', serif;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+blockquote, q {
+    display: block;
+    margin: 1em 0;
+    font-style: italic;
+}
+
+blockquote a, q a {
+    text-decoration: underline;
+}
+
+blockquote {
+    padding-left: 10px;
+    border-left: 4px solid #a6a6a6;
+}
+
+q {
+    color: #a6a6a6;
+    line-height: 40px;
+    font-size: 24px;
+    text-align: center;
+    quotes: none;
+}
+
+q a {
+    color: #a6a6a6;
+}
+
+code, pre {
+    font-family: Consolas, "Liberation Mono", Menlo, "Courier Prime Web", Courier, monospace;
+    background: #f3f3f3;
+}
+
+code {
+    padding: 1px;
+    margin: 0 -1px;
+    border-radius: 3px;
+}
+
+pre {
+    display: block;
+    line-height: 20px;
+    text-shadow: 0 1px white;
+    padding: 5px 5px 5px 30px;
+    white-space: nowrap;
+    position: relative;
+    margin: 1em 0;
+}
+
+pre:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    border-left: solid 1px #dadada;
+}
+
+/* Lists */
+div[data-section-style="5"],
+div[data-section-style="6"],
+div[data-section-style="7"] {
+    margin: 12px 0;
+}
+
+ul {
+    padding: 0 0 0 40px;
+}
+
+ul li {
+    margin-bottom: 0.4em;
+}
+
+/* Bulleted list */
+div[data-section-style="5"] ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul {
+    list-style-type: square;
+}
+div[data-section-style="5"] ul ul ul ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul ul ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul ul ul ul {
+    list-style-type: square;
+}
+
+/* Numbered list */
+div[data-section-style="6"] ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul {
+    list-style-type: lower-roman;
+}
+div[data-section-style="6"] ul ul ul ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul ul ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul ul ul ul {
+    list-style-type: lower-roman;
+}
+
+/* Checklist */
+div[data-section-style="7"] ul {
+    list-style-type: none;
+}
+
+div[data-section-style="7"] ul li:before {
+    content: "\2610";
+    position: absolute;
+    display: inline;
+    margin-right: 1.2em;
+    margin-left: -1.2em;
+}
+
+div[data-section-style="7"] ul li.parent:before {
+    content: "";
+}
+
+div[data-section-style="7"] ul li.parent {
+    font-weight: bold;
+}
+
+div[data-section-style="7"] ul li.checked {
+    text-decoration: line-through;
+}
+
+div[data-section-style="7"] ul li.checked:before {
+    content: "\2611";
+    text-decoration: none;
+}
+
+/* Tables */
+div[data-section-style="8"] {
+    margin: 12px 0;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: separate;
+    border: solid 1px #7c7c7c;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .25);
+    table-layout: fixed;
+    position: relative;
+}
+
+table th, table td {
+    padding: 2px 2px 0;
+    min-width: 1.5em;
+    word-wrap: break-word;
+}
+
+table th {
+    border-bottom: 1px solid #ccc;
+    background: #f0f0f0;
+    font-weight: bold;
+    vertical-align: bottom;
+    color: #3a4449;
+    text-align: center;
+}
+
+table td {
+    padding-top: 0;
+    border-left: 1px solid #e1e1e1;
+    border-top: 1px solid #e1e1e1;
+    vertical-align: top;
+}
+
+table td.bold {
+    font-weight: bold;
+}
+
+table td.italic {
+    font-style: italic;
+}
+
+table td.underline {
+    text-decoration: underline;
+}
+
+table td.strikethrough {
+    text-decoration: line-through;
+}
+
+table td.underline.strikethrough {
+    text-decoration: underline line-through;
+}
+
+table td:first-child {
+    border-left: hidden;
+}
+
+table tr:first-child td {
+    border-top: hidden;
+}
+
+/* Images */
+div[data-section-style="11"] {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div[data-section-style="11"][data-section-float="0"] {
+    clear: both;
+    text-align: center;
+}
+
+div[data-section-style="11"][data-section-float="1"] {
+    float: left;
+    clear: left;
+    margin-right: 20px;
+}
+
+div[data-section-style="11"][data-section-float="2"] {
+    float: right;
+    clear: right;
+    margin-left: 20px;
+}
+
+div[data-section-style="11"] img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+hr {
+    width: 70px;
+    margin: 20px auto;
+}
+</style></head><body><h1 id='OSfACAXyRLe'>Python 3/3</h1>
+
+<a href="http://pydoing.blogspot.tw/2014/07/python-guide.html">http://pydoing.blogspot.tw/2014/07/python-guide.html</a><br/>
+
+<h2 id='OSfACAXStNU'>基礎篇1~5</h2>
+
+<h3 id='OSfACASo7vH'>check python version</h3>
+
+<pre id='OSfACAlqMsE'>zack@ubuntu:~$ python -V<br>Python 2.7.12</pre>
+
+<div data-section-style='5'><ul id='OSfACA5jhze'><li id='OSfACAPDLFg' class='parent' value='1'>現在主要 Python 版本為2.7 與 3.5
+
+<br/></li><ul><li id='OSfACAkqUxw' class='parent'>2.7
+
+<br/></li><ul><li id='OSfACAv6eCF' class=''>效率較高
+
+<br/></li><li id='OSfACAw0q1J' class=''>幾年內將暫停維護
+
+<br/></li><li id='OSfACAlCgvk' class=''>大多數環境下仍為預設版本
+
+<br/></li><li id='OSfACABLgjJ' class=''>僅實作部分新功能
+
+<br/></li></ul><li id='OSfACAbiD2O' class='parent'>3.5
+
+<br/></li><ul><li id='OSfACAoPUvS' class=''>原生支援 unicode
+
+<br/></li><li id='OSfACAvBxeJ' class=''>新功能多針對這個版本
+
+<br/></li><li id='OSfACAWCwAl' class=''>大多數第三方函式庫已跟進到 3.5
+
+<br/></li></ul></ul></ul></div><h3 id='OSfACAKnD77'>try to use interpreter</h3>
+
+<pre id='OSfACAnlwHY'>zack@ubuntu:~$ python<br>Python 2.7.12 (default, Nov 19 2016, 06:48:10)<br>[GCC 5.4.0 20160609] on linux2<br>Type "help", "copyright", "credits" or "license" for more information.<br>&gt;&gt;&gt;<br><br># Ctrl + d，結束interpreter</pre>
+
+<div data-section-style='5'><ul id='OSfACAox9GO'><li id='OSfACAzvuWH' class='parent' value='1'>interpreter 和 compiler 的差異
+
+<br/></li><ul><li id='OSfACA4TsGN' class='parent'>interpreter
+
+<br/></li><ul><li id='OSfACAYvTI4' class=''>執行時，一行接著一行依序將程式碼轉換成機器碼執行
+
+<br/></li><li id='OSfACAJ4EiS' class=''>執行時期才做轉換，導致執行效率較慢
+
+<br/></li><li id='OSfACAO8e6J' class=''>e.g. Python, Bash
+
+<br/></li></ul><li id='OSfACATDfNS' class='parent'>compiler
+
+<br/></li><ul><li id='OSfACAyuFLE' class=''>一口氣將全部程式碼轉換成機器碼
+
+<br/></li><li id='OSfACAZeXBE' class=''>執行速度較快
+
+<br/></li><li id='OSfACA9SU4l' class=''>e.g. C, C++
+
+<br/></li></ul></ul></ul></div><h3 id='OSfACACpbwx'>try print()</h3>
+
+<pre id='OSfACAGdsxd'>Python 2.7.12 (default, Nov 19 2016, 06:48:10)<br>[GCC 5.4.0 20160609] on linux2<br>Type "help", "copyright", "credits" or "license" for more information.<br>&gt;&gt;&gt; print('Hello')<br>Hello</pre>
+
+<h3 id='OSfACAn4Buz'>Run Python Script</h3>
+
+<pre id='OSfACADmn51'># demo.py<br>print('Hello')</pre>
+
+<pre id='OSfACAhrYBa'># run demo.py<br>zack@ubuntu:~$ python demo.py<br>Hello</pre>
+
+<h3 id='OSfACAxV0iM'>主要的變數型別</h3>
+
+<div data-section-style='5'><ul id='OSfACASZeLQ'><li id='OSfACA82kIv' class='parent' value='1'>None
+
+<br/></li><ul><li id='OSfACAdK4pT' class=''>空的，沒有任何內容
+
+<br/></li></ul><li id='OSfACAkKZd8' class='parent'>boolean
+
+<br/></li><ul><li id='OSfACA8eus2' class=''>布林
+
+<br/></li><li id='OSfACATCEpZ' class=''>e.g. <code>True</code>, <code>False</code>
+
+<br/></li></ul><li id='OSfACAAhjvc' class='parent'>integer
+
+<br/></li><ul><li id='OSfACAdfo2P' class=''>整數
+
+<br/></li><li id='OSfACA1T4Cx' class=''>e.g. <code>1</code>, <code>2</code>
+
+<br/></li></ul><li id='OSfACAghPfP' class='parent'>float
+
+<br/></li><ul><li id='OSfACAHYhQr' class=''>浮點數
+
+<br/></li><li id='OSfACAFSsOg' class=''>e.g. <code>1.2</code>, <code>1.0</code>
+
+<br/></li></ul><li id='OSfACAPU2VN' class='parent'>string
+
+<br/></li><ul><li id='OSfACAGGYA8' class=''>字串
+
+<br/></li><li id='OSfACA0TWUB' class=''>e.g. <code>'hello'</code>, <code>''</code>, <code>""</code>
+
+<br/></li></ul><li id='OSfACAk08Fk' class='parent'>list
+
+<br/></li><ul><li id='OSfACAWpFTk' class=''>列表
+
+<br/></li><li id='OSfACAY27r5' class=''>e.g. <code>[]</code>, <code>[1, [2, 3], 'hello', 5.7]</code>
+
+<br/></li></ul><li id='OSfACAinUyo' class='parent'>tuple
+
+<br/></li><ul><li id='OSfACA7xt2n' class=''>元組
+
+<br/></li><li id='OSfACAbvWch' class=''>e.g. <code>()</code>, <code>(1, [2, 3], 'hello', 5.7)</code>
+
+<br/></li></ul><li id='OSfACA5ucNP' class='parent'>dictionary
+
+<br/></li><ul><li id='OSfACAgi1b8' class=''>字典；key-value 的配對集合
+
+<br/></li><li id='OSfACAPJO4w' class=''>e.g. <code>{}</code>, <code>{'aaa':'a', 2:'333', 'z':[2, 3]}</code>
+
+<br/></li></ul><li id='OSfACAvQQsL' class='parent'>重要差同
+
+<br/></li><ul><li id='OSfACA5bWcI' class='parent'>string
+
+<br/></li><ul><li id='OSfACAUs6s9' class=''>單引號、雙引號皆可，不論用哪一個開始字串，只能用同一個結束字串
+
+<br/></li></ul><li id='OSfACAH2qlF' class='parent'>integer vs. float
+
+<br/></li><ul><li id='OSfACApHb1P' class=''>有小數點的是 float；沒有的是 integer
+
+<br/></li><li id='OSfACA2480B' class=''>integer 之間運算，只會產生 integer。遇到小數點部分會捨去。
+
+<br/></li></ul><li id='OSfACAJbCFF' class='parent'>list vs. tuple
+
+<br/></li><ul><li id='OSfACAymXcD' class=''>list 宣告後可改變內容；tuple 則不行
+
+<br/></li></ul><li id='OSfACAxsB0L' class='parent'>list, tuple and dictionary
+
+<br/></li><ul><li id='OSfACAYV48U' class=''>都可以用 key 來取得內容
+
+<br/></li><li id='OSfACAYdpas' class=''>&gt;&gt;&gt; a = [1, 2, 3]<br>&gt;&gt;&gt; a[0]<br>1<br>&gt;&gt;&gt; a[2]<br>3<br>&gt;&gt;&gt; b = (2, 3, 4)<br>&gt;&gt;&gt; b[1]<br>3<br>&gt;&gt;&gt; c = {'a':123, 234:'def'}<br>&gt;&gt;&gt; c['a']<br>123<br>&gt;&gt;&gt; c[234]<br>'def'
+
+<br/></li></ul><li id='OSfACAbGut9' class='parent'>string, list, tuple
+
+<br/></li><ul><li id='OSfACA3zqOP' class=''>都可以使用 slice
+
+<br/></li><li id='OSfACAWgN2x' class=''>&gt;&gt;&gt; "abcdefg"[1:3]<br>'bc'<br>&gt;&gt;&gt; "abcdefg"[5:18]<br>'fg'<br>&gt;&gt;&gt; "abcdefg"[-5:18]<br>'cdefg'<br>&gt;&gt;&gt; "abcdefg"[:]<br>'abcdefg'<br>&gt;&gt;&gt; "abcdefg"[2:]<br>'cdefg'<br>&gt;&gt;&gt; "abcdefg"[:3]<br>'abc'<br>&gt;&gt;&gt; "abcdefg"[1:5:2]<br>'bd'<br>&gt;&gt;&gt; "abcdefg"[-1:0:-2]<br>'gec'
+
+<br/></li></ul></ul></ul></div><h3 id='OSfACAzUbFY'>重要跳脫字元</h3>
+
+<pre id='OSfACAaV0WA'>\t  # tab<br>\\  # 反斜線<br>\n  # 換行<br>\?  # 問號<br>\'  # 單引號<br>\"  # 雙引號</pre>
+
+<h3 id='OSfACA1Xova'>邏輯運算 not, And, or</h3>
+
+<pre id='OSfACAbDGct'># not [bool]<br># 邏輯否定<br>&gt;&gt;&gt; print(not True)<br>False<br><br># [bool] and [bool]<br># 交集<br>&gt;&gt;&gt; print(True and False)<br>False<br><br># [bool] or [bool]<br># 聯集<br>&gt;&gt;&gt; print(False or True)<br>True</pre>
+
+<h3 id='OSfACAvrwJz'>命名建議</h3>
+
+<pre id='OSfACAH3RT3'>b<br>B<br># 意義不明的字詞盡量不要用</pre>
+
+<pre id='OSfACA6UaHw'>lowercase<br>lowercase_and_underscores<br># 一般變數(variable)與函式(function/method)命名</pre>
+
+<pre id='OSfACAmWYQv'>UPPERCASE<br>UPPERCASE_AND_UNDERSCORES<br># 常數命名</pre>
+
+<pre id='OSfACAQuysP'>CapitalizedWords<br># 類別(class)命名</pre>
+
+<pre id='OSfACAd8vf6'>mixedCase<br># 也可以接受的命名方式之一</pre>
+
+<pre id='OSfACAdwztA'># 原則上，命名只考慮使用[a-z], [A-Z], [0-9], _<br># 不能以數字開頭</pre>
+
+<h3 id='OSfACAQ7iQS'>常用運算元</h3>
+
+<pre id='OSfACAC3vPw'>&gt;&gt;&gt; a = 2<br>&gt;&gt;&gt; b = a + 2<br>&gt;&gt;&gt; c = b - 2<br>&gt;&gt;&gt; d = c * 2<br>&gt;&gt;&gt; e = d / 2<br>&gt;&gt;&gt; f = e % 2   # 取餘數<br>&gt;&gt;&gt; g = f ** 2  # 次方</pre>
+
+<pre id='OSfACAWtqyX'>&gt;&gt;&gt; a = 'a'<br>&gt;&gt;&gt; b = a + 'bcd'<br>&gt;&gt;&gt; c = b * 3</pre>
+
+<pre id='OSfACAmI0EH'>&gt;&gt;&gt; a = 11<br>&gt;&gt;&gt; b = 22<br>&gt;&gt;&gt; c = a &gt;= b<br>&gt;&gt;&gt; d = a &lt;= b<br>&gt;&gt;&gt; e = c == d<br>&gt;&gt;&gt; f = a != b</pre>
+
+<pre id='OSfACA3SKHF'>&gt;&gt;&gt; a = 11<br>&gt;&gt;&gt; a += 10<br>&gt;&gt;&gt; a -= 9<br>&gt;&gt;&gt; a *= 8<br>&gt;&gt;&gt; a /= 6<br>&gt;&gt;&gt; a %= 4<br>&gt;&gt;&gt; a **= 2</pre>
+
+<pre id='OSfACA0MS0O'>&gt;&gt;&gt; a, b, c = 11, 22, 33</pre>
+
+<pre id='OSfACAtA5z0'>&gt;&gt;&gt; f = (a != b)</pre>
+
+<h3 id='OSfACAbf9Tj'>Built-in Functions: int(), raw_input(), input()</h3>
+
+<a href="https://docs.python.org/2/library/functions.html#int">https://docs.python.org/2/library/functions.html#int</a><br/>
+
+<pre id='OSfACAORE5t'># 字串或浮點數轉整數<br>&gt;&gt;&gt; int('645')<br>645<br>&gt;&gt;&gt; int(64.5)<br>64</pre>
+
+<a href="https://docs.python.org/2/library/functions.html#raw_input">https://docs.python.org/2/library/functions.html#raw_input</a><br/>
+
+<pre id='OSfACAuGNAS'>&gt;&gt;&gt; s = raw_input('--&gt; ')<br>--&gt; Monty Python's Flying Circus<br>&gt;&gt;&gt; s<br>"Monty Python's Flying Circus"</pre>
+
+<div data-section-style='5'><ul id='OSfACAkRJSe'><li id='OSfACAmgl3C' class='parent' value='1'>raw_input() vs. input()
+
+<br/></li><ul><li id='OSfACAMCaUO' class=''>raw_input() 單純回傳字串
+
+<br/></li><li id='OSfACA66p44' class=''>input() 則試圖運算內容再回傳
+
+<br/></li><li id='OSfACAenjs5' class=''>&gt;&gt;&gt; print(input('?'))<br>?1+2*3<br>7<br># 所以推薦使用 raw_input()
+
+<br/></li></ul></ul></div><h3 id='OSfACAz12A2'>練習</h3>
+
+<pre id='OSfACAGLQwT'># 寫一支程式<br># 請使用者輸入名字，然後回傳 hello 和輸入的名字<br># e.g.<br>zack@ubuntu:~$ python demo.py<br>Please input your name: zack    # 輸入名子後按enter<br>hello, zack<br>zack@ubuntu:~$</pre>
+
+<pre id='OSfACAClURz'># 從 built-in functions 中找到<br># 1. 用來取絕對值的函式<br># 2. 可以將數字轉換成字串的函式<br># 3. 可以將整數轉換浮點數的函式<br># 4. 可以取得變數型別(e.g. integer, float, string, etc)的函式<br># 5. 可以將整數轉換成二進位字串的函式</pre>
+
+<pre id='OSfACAkkh0u'># 寫一支程式<br># 請使用者輸入身高和體重，然後回傳BMI<br># e.g.<br>zack@ubuntu:~$ python demo.py<br>Please input your height(cm): 190   # 輸入數字後按enter<br>Please input your weight(kg): 90    # 輸入數字後按enter<br>Your BMI is 24.930747922437675<br>zack@ubuntu:~$</pre>
+
+</body></html>
