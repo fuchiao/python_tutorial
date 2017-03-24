@@ -1,0 +1,354 @@
+<!doctype html>
+<html><head><title>Python 3/23, 27</title><meta charset="UTF-8"><link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic|Roboto:400,700,700italic,400italic" rel="stylesheet" type="text/css"><style>/*
+ * Copyright 2014 Quip
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+body {
+    font-size: 15px;
+    color: #333;
+    background: #fff;
+    padding: 60px 95px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern";
+    font-kerning: normal;
+    -moz-font-feature-settings: "kern";
+    -webkit-font-feature-settings: "kern";
+}
+
+/* Headings */
+h1, h2, h3, th {
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    margin: 0;
+    margin-top: 1.25em;
+    margin-bottom: 0.75em;
+}
+
+h1 {
+    font-size: 35px;
+    line-height: 42px;
+}
+
+h1:first-child {
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+h3 {
+    text-transform: uppercase;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+/* Body text */
+body, p, ul, ol, td {
+    font-family: 'Crimson Text', serif;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+blockquote, q {
+    display: block;
+    margin: 1em 0;
+    font-style: italic;
+}
+
+blockquote a, q a {
+    text-decoration: underline;
+}
+
+blockquote {
+    padding-left: 10px;
+    border-left: 4px solid #a6a6a6;
+}
+
+q {
+    color: #a6a6a6;
+    line-height: 40px;
+    font-size: 24px;
+    text-align: center;
+    quotes: none;
+}
+
+q a {
+    color: #a6a6a6;
+}
+
+code, pre {
+    font-family: Consolas, "Liberation Mono", Menlo, "Courier Prime Web", Courier, monospace;
+    background: #f3f3f3;
+}
+
+code {
+    padding: 1px;
+    margin: 0 -1px;
+    border-radius: 3px;
+}
+
+pre {
+    display: block;
+    line-height: 20px;
+    text-shadow: 0 1px white;
+    padding: 5px 5px 5px 30px;
+    white-space: nowrap;
+    position: relative;
+    margin: 1em 0;
+}
+
+pre:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    border-left: solid 1px #dadada;
+}
+
+/* Lists */
+div[data-section-style="5"],
+div[data-section-style="6"],
+div[data-section-style="7"] {
+    margin: 12px 0;
+}
+
+ul {
+    padding: 0 0 0 40px;
+}
+
+ul li {
+    margin-bottom: 0.4em;
+}
+
+/* Bulleted list */
+div[data-section-style="5"] ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul {
+    list-style-type: square;
+}
+div[data-section-style="5"] ul ul ul ul {
+    list-style-type: disc;
+}
+div[data-section-style="5"] ul ul ul ul ul {
+    list-style-type: circle;
+}
+div[data-section-style="5"] ul ul ul ul ul ul {
+    list-style-type: square;
+}
+
+/* Numbered list */
+div[data-section-style="6"] ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul {
+    list-style-type: lower-roman;
+}
+div[data-section-style="6"] ul ul ul ul {
+    list-style-type: decimal;
+}
+div[data-section-style="6"] ul ul ul ul ul {
+    list-style-type: lower-alpha;
+}
+div[data-section-style="6"] ul ul ul ul ul ul {
+    list-style-type: lower-roman;
+}
+
+/* Checklist */
+div[data-section-style="7"] ul {
+    list-style-type: none;
+}
+
+div[data-section-style="7"] ul li:before {
+    content: "\2610";
+    position: absolute;
+    display: inline;
+    margin-right: 1.2em;
+    margin-left: -1.2em;
+}
+
+div[data-section-style="7"] ul li.parent:before {
+    content: "";
+}
+
+div[data-section-style="7"] ul li.parent {
+    font-weight: bold;
+}
+
+div[data-section-style="7"] ul li.checked {
+    text-decoration: line-through;
+}
+
+div[data-section-style="7"] ul li.checked:before {
+    content: "\2611";
+    text-decoration: none;
+}
+
+/* Tables */
+div[data-section-style="8"] {
+    margin: 12px 0;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: separate;
+    border: solid 1px #7c7c7c;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .25);
+    table-layout: fixed;
+    position: relative;
+}
+
+table th, table td {
+    padding: 2px 2px 0;
+    min-width: 1.5em;
+    word-wrap: break-word;
+}
+
+table th {
+    border-bottom: 1px solid #ccc;
+    background: #f0f0f0;
+    font-weight: bold;
+    vertical-align: bottom;
+    color: #3a4449;
+    text-align: center;
+}
+
+table td {
+    padding-top: 0;
+    border-left: 1px solid #e1e1e1;
+    border-top: 1px solid #e1e1e1;
+    vertical-align: top;
+}
+
+table td.bold {
+    font-weight: bold;
+}
+
+table td.italic {
+    font-style: italic;
+}
+
+table td.underline {
+    text-decoration: underline;
+}
+
+table td.strikethrough {
+    text-decoration: line-through;
+}
+
+table td.underline.strikethrough {
+    text-decoration: underline line-through;
+}
+
+table td:first-child {
+    border-left: hidden;
+}
+
+table tr:first-child td {
+    border-top: hidden;
+}
+
+/* Images */
+div[data-section-style="11"] {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div[data-section-style="11"][data-section-float="0"] {
+    clear: both;
+    text-align: center;
+}
+
+div[data-section-style="11"][data-section-float="1"] {
+    float: left;
+    clear: left;
+    margin-right: 20px;
+}
+
+div[data-section-style="11"][data-section-float="2"] {
+    float: right;
+    clear: right;
+    margin-left: 20px;
+}
+
+div[data-section-style="11"] img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+hr {
+    width: 70px;
+    margin: 20px auto;
+}
+</style></head><body><h1 id='cELACAfAYPe'>Python 3/23, 27</h1>
+
+<h3 id='cELACAw39LE'>Immutable and Mutable</h3>
+
+<pre id='cELACAM5iLy'># id()<br># 在 python 中，每一個 object 都會帶有一個獨一無二的 id<br># 我們可以從 id 的變化判斷 object 是否為同一個，或是重新建了一個新的</pre>
+
+<pre id='cELACAOyEZV'>def a(s):<br>    print(id(s))<br>    s += s<br>    print(id(s))<br><br>s = 9 # immutable，變更內容時必須重新建立 object<br>print(s, id(s))<br>a(s)<br>print(s, id(s))</pre>
+
+<pre id='cELACADcIaT'>def a(s):<br>    print(id(s))<br>    s += s<br>    print(id(s))<br><br>s = [9]   # mutable，可以直接修改 object 內容<br>print(s, id(s))<br>a(s)<br>print(s, id(s))</pre>
+
+<h3 id='cELACA4StiQ'>引入函式庫</h3>
+
+<pre id='cELACAarypt'># fibo.py<br>def fib(n):    # write Fibonacci series up to n<br>    a, b = 0, 1<br>    while b &lt; n:<br>        print b,<br>        # 1    | 1    |<br>        a, b = b, a+b<br>        # 1, 1 | 1, 2 |<br><br>def fib2(n):   # return Fibonacci series up to n<br>    result = []<br>    a, b = 0, 1<br>    while b &lt; n:<br>        result.append(b)<br>        a, b = b, a+b<br>    return result</pre>
+
+<pre id='cELACArc7PL'>&gt;&gt;&gt; import fibo<br>&gt;&gt;&gt; fibo.fib(1000)<br>1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987<br>&gt;&gt;&gt; fibo.fib2(100)<br>[1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]<br>&gt;&gt;&gt; fibo.__name__<br>'fibo'</pre>
+
+<pre id='cELACAK2BaR'>&gt;&gt;&gt; from fibo import fib, fib2<br>&gt;&gt;&gt; fib(500)<br>1 1 2 3 5 8 13 21 34 55 89 144 233 377</pre>
+
+<pre id='cELACAM5y6v'>&gt;&gt;&gt; from fibo import *<br>&gt;&gt;&gt; fib(500)<br>1 1 2 3 5 8 13 21 34 55 89 144 233 377</pre>
+
+<h3 id='cELACAQOh2d'>練習</h3>
+
+<pre id='cELACAiZoyq'># 寫一個 health.py，裡面提供<br># bmi(height, weight)，回傳值為 bmi</pre>
+
+<pre id='cELACAE7qUH'># 寫一個 number.py，裡面提供<br># gcd(a, b)，回傳值為最大公因數<br># lcd(a, b)，回傳值為最小公倍數</pre>
+
+<pre id='cELACAIVL2V'># 寫一個 sort.py，裡面提供<br># bubble_sort(a)<br># 由第一位開始，依序與第二位到最後一位相比，較小則交換。完成後，保證第一位為序列中最小數字。<br># 再由第二位開始，依序與第三位到最後一位相比，較小則交換。完成後，保證第二位為序列中次小數字。<br># 直至整個序列完成。<br><br># quick_sort(a)<br># 取第一位數字作為pivot，將剩餘數字分成大於該數字和小於該數字兩組<br># 不斷分別進行一次上一步驟，直到無法再分大小組<br>[2, 3, 4, 32, 31, 30, 45, 44, 43]<br>('split', [45, 44], 43, [2, 3, 4, 32, 31, 30])<br>('split', [45], 44, [])<br>('split', [], 45, [])<br>[45]<br>[45, 44]<br>('split', [32, 31], 30, [2, 3, 4])<br>('split', [32], 31, [])<br>('split', [], 32, [])<br>[32]<br>[32, 31]<br>('split', [], 4, [2, 3])<br>('split', [], 3, [2])<br>('split', [], 2, [])<br>[2]<br>[3, 2]<br>[4, 3, 2]<br>[32, 31, 30, 4, 3, 2]<br>[45, 44, 43, 32, 31, 30, 4, 3, 2]</pre>
+
+<h3 id='cELACA3QZwG'>random</h3>
+
+<pre id='cELACAtxdmq'>import random<br>random.randint(1, 10)<br>random.shuffle(range(10))<br>random.choice('abcdefg')</pre>
+
+<h3 id='cELACArk66e'>練習</h3>
+
+<pre id='cELACAvLUHi'># 在 main.py<br># 利用 random 提供的函式，提供 input 給先前練習中的函式</pre>
+
+<h3 id='cELACAntjgg'>time</h3>
+
+<pre id='cELACARSd98'>import time<br>start = time.clock()<br>print 'hello'<br>end = time.clock()<br>print(end - start)</pre>
+
+<h3 id='cELACA3h6km'>練習</h3>
+
+<pre id='cELACA5OmP7'># 在 main.py<br># 測試先前的排序函式需要多少執行時間</pre>
+
+</body></html>
